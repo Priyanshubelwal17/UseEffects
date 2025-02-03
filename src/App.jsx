@@ -5,13 +5,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Counter from './counter'
 import QuoteFetcher from './QuoteFetcher'
+import QuoteFetcherLoader from './QuoteFetcherLoader'
 
 function App() {
 
 
   return (
     <>
-      <QuoteFetcher />
+      <QuoteFetcherLoader />
+      {/* <QuoteFetcher /> */}
       {/* <Counter /> */}
     </>
   )
