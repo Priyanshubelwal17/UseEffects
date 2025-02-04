@@ -12,8 +12,8 @@ function App() {
 
   return (
     <>
-      <ProfileViewerWithSearch />
-      {/* <QuoteFetcherLoader /> */}
+      {/* <ProfileViewerWithSearch /> */}
+      <QuoteFetcherLoader />
       {/* <QuoteFetcher /> */}
       {/* <Counter /> */}
     </>

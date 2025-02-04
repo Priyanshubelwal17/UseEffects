@@ -31,7 +31,7 @@ function ProfileViewerWithSearch() {
         setUsername(username)
     }
 
-    if (profile.isLoading) return <i>Laoding...</i>;
+    if (profile.isLoading) return <div className="loader" ></div>
     if (profile.error) return <p style={{ color: "red", fontSize: "3rem" }} > Error: {profile.error}</p>
     return (
         <div>
