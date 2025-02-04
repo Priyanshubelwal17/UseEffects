@@ -11,8 +11,16 @@ function ProfileViewerWithSearch() {
     useEffect(
         function fetchUserOnUsernameChange() {
             async function fetchUser() {
-                const userResult = await axios.get(`${BASE_URL}/${username}`);
-                setProfile({ data: userResult.data, isLoading: false })
+                try {
+                    const userResult = await axios.get(`${BASE_URL}/${username}`);
+                    setProfile({ data: userResult.data, isLoading: false })
+                } catch (err) {
+                    if (err.response && err.response.status === 404) {
+                        setProfile({ data: null, isLoading: false, error: "Username not found" })
+                    } else {
+                        setProfile({ data: null, isLoading: false, error: "Failed to load profile,Please try again" })
+                    }
+                }
             }
             fetchUser();
         },
@@ -23,8 +31,8 @@ function ProfileViewerWithSearch() {
         setUsername(username)
     }
 
-    if (profile.isLoading) return <i>Laoding...</i>
-
+    if (profile.isLoading) return <i>Laoding...</i>;
+    if (profile.error) return <p style={{ color: "red", fontSize: "3rem" }} > Error: {profile.error}</p>
     return (
         <div>
             <ProfileSearchForm search={search} />
